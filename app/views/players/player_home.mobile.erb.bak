@@ -1,0 +1,85 @@
+
+
+<div data-role="page" id="home_page">
+
+
+
+<div data-role="header" >
+	<%= image_tag '/assets/TechResultsCasinoBanner.png' , width:'100%' %>
+</div>
+
+
+<div class="ui-bar ui-bar-b">
+	<h3 class="alignleft">Welcome <%= current_player.name %></h3>
+	<div class = "alignright" id='home_notification'>
+		<% if Notification.where('playerid=?' ,current_player.playerid ).sum('bulb') == 0 %>
+			<%= link_to (image_tag ('/assets/dark.png')) , notifications_path  %>
+		<% else %>
+			<%= link_to (image_tag ('/assets/light.png')) , notifications_path  %>
+		<% end %>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+	<div data-role="content">
+	
+			<% if signed_in? %>
+			<div id="info">
+					<table>
+						<tr><td></td></tr>
+						<tr><td>Member </td><td>Details</td></tr>
+						<tr class="ln_separator"><td></td><td></td></tr>
+						<% for i in 0...3 do %>
+							<tr><td></td></tr>
+						<% end %>
+	
+						
+						<tr><td>Name </td><td>: <%= current_player.name %></td></tr>
+						<tr><td>PlayerID </td><td>: <%= current_player.playerid %></td></tr>
+						<tr><td>Contact </td><td>: <%= current_player.contact %></td></tr>				
+					</table>
+			</div>
+				
+
+				<div id="img"><%= image_tag '/assets/Gold.png' , :width=> 200 %></div>
+			
+				<div id="balance">
+					<table>
+						<tr><td></td></tr>
+						<tr><td>Points</td></tr>
+						<tr class="ln_separator1"><td></td><td></td></tr>
+						<% for i in 0...2 do %>
+							<tr><td></td></tr>
+						<% end %>
+						
+						<tr><td>Points Redeemed </td><td>: <%= number_with_delimiter(@player.ptsRed, :delimiter => ',') %></td></tr>
+						<tr><td>Points Balance  </td><td>: <%= number_with_delimiter(@player.ptsBal, :delimiter => ',') %></td></tr>
+					</table>
+				</div>
+				<br/>
+				
+
+			<% else %>
+				You are not signed in<br/>
+				<% link_to signin_path %>
+			<% end %>
+			
+		<div id='current_player' style="display:none"><%= current_player.playerid %></div>
+	</div>
+	
+	<div data-role="footer" data-position="fixed" >
+		<div data-role="navbar" >
+			<ul>
+				<li><%= link_to '' , player_home_path, 'data-icon' => 'home' %></li>
+				<li id="offer1"><%= link_to '', offers_path, 'data-icon' => 'offer' %></li>
+				<li id="event1"><%= link_to '' , events_path, 'data-icon' => 'event' %></li>
+				<li id="promotion1"><%= link_to '', player_home_path, 'data-icon' => 'promotion' %></li>
+				<li id="news1"><%= link_to '', announcements_path, 'data-icon' => 'news' %></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div>
+
+</div>
+
+
+

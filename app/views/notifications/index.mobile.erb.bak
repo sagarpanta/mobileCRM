@@ -1,0 +1,112 @@
+
+<div data-role="page" id="notifications_page">
+
+<div data-role="header">
+	<%= image_tag '/assets/TechResultsCasinoBanner.png' , width:'100%' %>
+</div>
+
+
+<div class="ui-bar ui-bar-b">
+	<h3 class="alignleft">Notifications</h3>
+	<div class = "alignright" id='notification_notification'><%= link_to (image_tag ('/assets/dark.png')) , notifications_path  %></div>
+	<div style="clear: both;"></div>
+</div>
+
+
+
+
+
+
+<div data-role="content">
+	<% if signed_in? %>
+		<%= render '/notifications/realtimenotification' %>
+		<% @notifications.each do |notification| %>
+				<% notification.set_bulb_to_zero %>
+				<% if notification.read == 0 %>
+					<ul data-role="listview" data-theme="e"   data-split-theme="d" >
+						
+							<% if notification.notification == 'offers' %>
+								<li><a href="/notifications/<%= notification.id %>"  class="ui-link-inherit">
+									<img src="/assets/<%= notification.code %>o.png" />
+									<h3><%= 'New offer: ' + notification.description  %></h3>
+									<p>Start Date: <%=  notification.startdate %></p>
+									<p>End Date: <%= notification.endate %></p>
+									</a>
+								</li>
+							<% elsif notification.notification == 'events' %>
+								<li><a href="/notifications/<%= notification.id %>"  class="ui-link-inherit">
+									<img src="/assets/<%= notification.code %>e.png" />
+									<h3><%= 'New event: ' + notification.description  %></h3>
+									<p>Start Date: <%= notification.startdate %></p>
+									<p>End Date: <%= notification.endate %></p>
+									</a>
+								</li>
+							<% elsif notification.notification == 'promotions' %>
+								<li><a href="/notifications/<%= notification.id %>"  class="ui-link-inherit">
+									<img src="/assets/default_promotion.png" />
+									<h3><%= 'New promotion: ' + notification.description  %></h3>
+									<p>Start Date: <%= notification.startdate %></p>
+									<p>End Date: <%= notification.endate %></p>
+									</a>
+								</li>
+							<% end %>
+						</li>
+					</ul>
+				<% else %>
+					<ul data-role="listview" data-theme="d"   data-split-theme="d">
+						
+							<% if notification.notification == 'offers' %>
+								<li>
+									<a href="/notifications/<%= notification.id %>"  class="ui-link-inherit">
+									<img src="/assets/<%= notification.code %>o.png" />
+									<h3><%= 'New offer: ' + notification.description  %></h3>
+									<p>Start Date: <%=  notification.startdate %></p>
+									<p>End Date: <%= notification.endate %></p>
+									</a>
+								</li>
+							<% elsif notification.notification == 'events' %>
+								<li><a href="/notifications/<%= notification.id %>"  class="ui-link-inherit">
+									<img src="/assets/<%= notification.code %>e.png" />
+									<h3><%= 'New event: ' + notification.description  %></h3>
+									<p>Start Date: <%= notification.startdate %></p>
+									<p>End Date: <%= notification.endate %></p>
+									</a>
+								</li>
+							<% elsif notification.notification == 'promotions' %>
+								<li>
+									<a href="/notifications/<%= notification.id %>"  class="ui-link-inherit">
+									<img src="/assets/default_promotion.png" />
+									<h3><%= 'New promotion: ' + notification.description  %></h3>
+									<p>Start Date: <%= notification.startdate %></p>
+									<p>End Date: <%= notification.endate %></p>
+									</a>
+								</li>
+							<% end %>
+
+					</ul>
+				<% end %>
+
+
+		<% end %>
+	<% end %>
+
+
+</div>
+
+
+<div data-role="footer" data-position="fixed" >
+		<div data-role="navbar" >
+			<ul>
+				<li class="home1"><%= link_to '' , player_home_path, 'data-icon' => 'playershome' %></li>
+				<li class="offer1"><%= link_to '', offers_path, 'data-icon' => 'offer' %></li>
+				<li class="event1"><%= link_to '' , events_path, 'data-icon' => 'event' %></li>
+				<li class="promotion1"><%= link_to '', promotions_path, 'data-icon' => 'promotion' %></li>
+				<li class="news1"><%= link_to '', announcements_path, 'data-icon' => 'news' %></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div>
+
+	
+</div>
+
+

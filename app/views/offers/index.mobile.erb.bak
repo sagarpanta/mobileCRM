@@ -1,0 +1,117 @@
+
+
+<div data-role="page" id="offer_page">
+
+
+
+<div data-role="header" >
+	<%= image_tag '/assets/TechResultsCasinoBanner.png' , width:'100%' %>
+</div>
+
+<div class="ui-bar ui-bar-b">
+	<h3 class="alignleft">Offers</h3>
+	<div class = "alignright" id='offer_notification'>
+		<% if Notification.where('playerid=?' ,current_player.playerid ).sum('bulb') == 0 %>
+			<%= link_to (image_tag ('/assets/dark.png')) , notifications_path  %>
+		<% else %>
+			<%= link_to (image_tag ('/assets/light.png')) , notifications_path  %>
+		<% end %>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+
+
+<div data-role="content">
+
+
+
+	<% if signed_in? %>
+	  <%= render '/offers/realtimeoffer' %>
+	  <% @offers.each do |o| %>
+		  
+		  <% if o.read == 0  %>
+			<ul data-role="listview" data-theme="e" data-split-icon="gear" data-split-theme="d">
+			  <li id="offer" class="ui-btn-icon-right" data-time="<%=  o.created_at  %>"><a href="/offers/<%= o.id %>" class="ui-link-inherit">
+				<%= image_tag o.code+'o.png' %>
+				<h3><%= o.description %><%= o.read %></h3>
+				</a>
+			  </li>
+			</ul>
+		  <% else %>
+			<ul data-role="listview" data-theme="d" data-split-icon="gear" data-split-theme="d">
+			  <li id="offer" class="ui-btn-icon-right" data-time="<%=  o.created_at  %>"><a href="/offers/<%= o.id %>" class="ui-link-inherit">
+				<%= image_tag o.code+'o.png' %>
+				<h3><%= o.description %><%= o.read %></h3>
+				</a>
+			  </li>
+			</ul>
+		  <% end %>
+	  <% end %>
+
+	<% else %>
+		You are not signed in<br/>
+		<% link_to signin_path %>
+	<% end %>
+</div>
+
+
+
+<div data-role="content">
+
+
+
+	<% if signed_in? %>
+	  <%= render '/offers/realtimeoffer' %>
+	  <table >
+	  <% @offers.each do |o| %>
+		<% if o.read == 0 %><%= image_tag o.code+'o.png' %>
+			    <tr class="offer_list_unread" data-time="<%=  o.created_at  %>">
+					<td class="image"><%= image_tag  o.code+'o.png' , :width =>'70px' , :height=> '70px' %></td>
+					<td><h3><%= o.description %></h3>
+						<p>Start Date: <%= o.startdate.strftime('%Y-%m-%d') %></p>
+						<p>End Date: <%= o.endate.strftime('%Y-%m-%d') %></p>
+					<td class="mark_as_read">
+							<%= link_to image_tag('/assets/unread.png'), p, :class=> "read", :remote=> true %>
+					</td>
+				</tr>
+		<% else %>
+			<tr class="offer_list" data-time="<%=  o.created_at  %>">
+				<td class="image"><%= image_tag o.code+'o.png' , :width =>'70px' , :height=> '70px' %></td>
+				<td>
+					<h3><%= o.description %></h3>
+					<p>Start Date: <%= o.startdate.strftime('%Y-%m-%d') %></p>
+					<p>End Date: <%= o.endate.strftime('%Y-%m-%d') %></p>
+					<p>Drawing: <%= o.drawingtime %></p>
+				</td>
+				<td class="mark_as_read">
+						<%= image_tag('/assets/read.png') %>
+				</td>
+				
+			</tr>
+		
+		
+		<% end %>
+	  <% end %>
+	  </table>
+	<% else %>
+		You are not signed in<br/>
+		<% link_to signin_path %>
+	<% end %>
+</div>
+
+	
+	<div data-role="footer" data-position="fixed" >
+		<div data-role="navbar" >
+			<ul>
+				<li class="home1"><%= link_to '' , player_home_path, 'data-icon' => 'playershome' %></li>
+				<li class="offer1"><%= link_to '', offers_path, 'data-icon' => 'offer' %></li>
+				<li class="event1"><%= link_to '' , events_path, 'data-icon' => 'event' %></li>
+				<li class="promotion1"><%= link_to '', promotions_path, 'data-icon' => 'promotion' %></li>
+				<li class="news1"><%= link_to '', announcements_path, 'data-icon' => 'news' %></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div>
+
+	
+</div>

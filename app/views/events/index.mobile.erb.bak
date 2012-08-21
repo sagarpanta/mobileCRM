@@ -1,0 +1,84 @@
+
+
+
+<div data-role="page" id="event_page">
+
+
+
+<div data-role="header" data-position="fixed">
+	<%= image_tag '/assets/TechResultsCasinoBanner.png' , width:'100%' %>
+	<div class="ui-bar ui-bar-b">
+		<h3 class="alignleft">Events</h3>
+		<div class = "alignright" id='event_notification'>
+			<% if Notification.where('playerid=?' ,current_player.playerid ).sum('bulb') == 0 %>
+				<%= link_to (image_tag ('/assets/dark.png')) , notifications_path  %>
+			<% else %>
+				<%= link_to (image_tag ('/assets/light.png')) , notifications_path  %>
+			<% end %>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+</div>
+
+
+
+
+
+<div data-role="content">
+
+	<% if signed_in? %>
+	  <%= render '/events/realtimeevent' %>
+	  <table>
+	  <% @events.each do |e| %>
+		<% if e.read == 0 %>
+			    <tr  class="event_list_unread" data-time="<%=  e.created_at  %>" data-id="<%= e.id %>">
+					<td class="spacer"><%= image_tag '/assets/spacer.png' %></td><td class="image"><%= image_tag '/assets/'+e.code+'e.png' , :width =>'60px' , :height=> '60px' %></td>
+					<td class="description">
+						<h3><%= e.description %></h3>
+						<p>Start Date: <%= e.startdate.strftime("%b %d, %Y") %></p>
+						<p>End Date: <%= e.enddate.strftime("%b %d, %Y") %></p>
+					</td>
+					
+					<td class="mark_as_read">
+						<%= link_to image_tag('/assets/unread.png'), e, :class=> "read", :remote=> true %>
+					</td>
+				</tr>
+				
+				
+				
+		<% else %>
+			<tr  class="event_list" data-time="<%=  e.created_at  %>">
+					<td class="spacer"><%= image_tag '/assets/spacer.png' %></td><td class="image"><%= image_tag '/assets/'+e.code+'e.png' , :width =>'60px' , :height=> '60px' %></td>
+					<td class="description">
+						<h3><%= e.description %></h3>
+						<p>Start Date: <%= e.startdate.strftime("%b %d, %Y") %></p>
+						<p>End Date: <%= e.enddate.strftime("%b %d, %Y") %></p>
+					</td>
+			</tr>
+			
+		
+		<% end %>
+	  <% end %>
+	  </table>
+	<% else %>
+		You are not signed in<br/>
+		<% link_to signin_path %>
+	<% end %>
+	<div id="cursor"></div>
+</div>
+
+	
+	<div data-role="footer" data-position="fixed" >
+		<div data-role="navbar" >
+			<ul>
+				<li class="home1"><%= link_to '' , player_home_path, 'data-icon' => 'playershome' %></li>
+				<li class="offer1"><%= link_to '', offers_path, 'data-icon' => 'offer' %></li>
+				<li class="event1"><%= link_to '' , events_path, 'data-icon' => 'event' %></li>
+				<li class="promotion1"><%= link_to '', promotions_path, 'data-icon' => 'promotion' %></li>
+				<li class="news1"><%= link_to '', announcements_path, 'data-icon' => 'news' %></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div>
+
+	
+</div>
