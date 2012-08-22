@@ -22,6 +22,10 @@ GEM
       activesupport (= 3.2.3)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-postgresql-adapter (0.0.1)
+      pg
+    activerecord-sqlserver-adapter (3.2.9)
+      activerecord (~> 3.2.0)
     activeresource (3.2.3)
       activemodel (= 3.2.3)
       activesupport (= 3.2.3)
@@ -57,6 +61,7 @@ GEM
     mobylette (3.1)
       actionpack (>= 3.0)
     multi_json (1.3.6)
+    pg (0.14.0-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -94,6 +99,7 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     thor (0.14.6)
     tilt (1.3.3)
+    tiny_tds (0.5.1-x86-mingw32)
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
@@ -106,10 +112,14 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  activerecord-postgresql-adapter
+  activerecord-sqlserver-adapter (~> 3.2.3)
   coffee-rails (~> 3.2.1)
   jquery-rails
   jquery_mobile_rails
   mobylette
+  pg
   rails (= 3.2.3)
   sass-rails (~> 3.2.3)
+  tiny_tds
   uglifier (>= 1.0.3)
