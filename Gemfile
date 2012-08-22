@@ -12,7 +12,6 @@ gem 'activerecord-sqlserver-adapter', '~> 3.2.3'
 gem 'mobylette'
 gem 'jquery_mobile_rails'
 
-
 group :developement, :test do
   gem 'pry'
   gem 'sqlite3'
