@@ -6,8 +6,6 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-gem 'tiny_tds'
-gem 'activerecord-sqlserver-adapter', '~> 3.2.3'
 
 gem 'mobylette'
 gem 'jquery_mobile_rails'
