@@ -7,20 +7,17 @@ gem 'rails', '3.2.3'
 
 
 gem 'tiny_tds'
-# gem 'activerecord-sqlserver-adapter', '~> 3.2.3'
+gem 'activerecord-sqlserver-adapter', '~> 3.2.3'
 
 gem 'mobylette'
 gem 'jquery_mobile_rails'
-group :production do
-  gem 'pg'
+
+
+group :developement, :test do
+  gem 'pry'
+  gem 'sqlite3'
+
 end
-
-
-#group :developement, :test do
-#  gem 'pry'
-#  gem 'sqlite3'
-
-#end
 
 
 # Gems used only for assets and not required
@@ -40,7 +37,6 @@ gem 'jquery-rails'
 
 
 
-gem 'thin'
 
 
 # To use ActiveModel has_secure_password
