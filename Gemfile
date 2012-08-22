@@ -11,6 +11,9 @@ gem 'tiny_tds'
 
 gem 'mobylette'
 gem 'jquery_mobile_rails'
+group :production do
+  gem 'pg'
+end
 
 
 #group :developement, :test do
