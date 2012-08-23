@@ -17,5 +17,9 @@ class Event < ActiveRecord::Base
 	update_attribute(:read, x)
 	return x
   end
+  
+ def update_notification
+	Notification.insert_new_record( id, code, 'events' ,  description , read  , playerid ,  1 , startdate ,enddate, '1900-01-01' , -2)
+ end
  
 end

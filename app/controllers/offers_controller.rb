@@ -44,6 +44,8 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if @offer.save
+		@offer.update_notification
+	
         format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
         format.json { render json: @offer, status: :created, location: @offer }
       else

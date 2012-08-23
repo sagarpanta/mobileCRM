@@ -45,6 +45,7 @@ class PromotionsController < ApplicationController
 
     respond_to do |format|
       if @promotion.save
+		@promotion.update_notification
         format.html { redirect_to @promotion, notice: 'Promotion was successfully created.' }
         format.json { render json: @promotion, status: :created, location: @promotion }
       else
