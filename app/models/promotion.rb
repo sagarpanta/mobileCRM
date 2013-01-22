@@ -15,7 +15,7 @@ class Promotion < ActiveRecord::Base
 
  
  def update_notification
-	Notification.insert_new_record( id, code, 'promotions' ,  description , read  , playerid ,  1 , startdate ,enddate, drawingtime , num_of_entries)
+	Notification.insert_new_record( id, code, 'promotions' ,  description , read  , playerid ,  1 , startdate ,endate, drawingtime , num_of_entries)
  end
  
 end
