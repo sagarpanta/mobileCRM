@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	$('#notifications_page').live('pageinit', function() {
+	$(document).on('pageinit', '#notifications_page', function() {
 		width = $(window).width();
 		$('ul').css('left', '0').css('width', width)
 		$('li').css('width', parseFloat(width/5));

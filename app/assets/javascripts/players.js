@@ -1,9 +1,5 @@
-$(document).ready(function() {
-
-	$('#home_page').live('pageinit' , function(){
-		
+$(document).on('pageinit' ,'#home_page', function(){
 		window_width = $(window).width();
-		
 		img_position = 0.5*window_width - 0.5*200;
 		//14 is an some unknown constant added to the position to make it central
 		//it is the difference between the programmatically calculate position and the actual postion
@@ -18,13 +14,12 @@ $(document).ready(function() {
 		$('li').css('width', parseFloat(window_width/5));
 		$('img.footer_img').height('40px');
 
-	});
-	
+		
 
-	$(".fhome").live('click', function(){
+	$(document).on('click',".fhome", function(){
 		var page = $('.page_home').html();
 		$('tr').scrollTop(300);
-		
+		console.log('bulb count from home page: '+$('#bulb_count').html());
 
 		$.ajax({
 			url: page,
@@ -35,7 +30,6 @@ $(document).ready(function() {
 				$('#home_content').html(content);
 				$('html, body').animate({scrollTop:0}, 'fast');
 				window_width = $(window).width();
-		
 		
 				img_position = 0.5*window_width - 0.5*200;
 				//14 is an some unknown constant added to the position to make it central
@@ -49,29 +43,22 @@ $(document).ready(function() {
 				alignleft_data = $(data).find('.alignleft').html();
 				
 				$('.alignleft').html(alignleft_data);
+				
+				var unread_bulbs = parseInt($('#unread_bulbs').html());
+				$('#bulb_count').html(unread_bulbs);
+				console.log('unread_bulbs ' + unread_bulbs);
+				if (parseInt(unread_bulbs) > 0){
+					$('#home_notification img').attr('src' , '/assets/greenlight.png');
+				}
 
 				
 			}
 		});
 		
-		
-	
-	
-
-		
-		
-		
-
-	
 	});
 	
-
-
-	
-	
-	$(".foffer").live('click', function(){
+	$(document).on('click',".foffer", function(){
 		var page = $('.page_offers').html();
-
 		$.ajax({
 			url: page,
 			type: "get",
@@ -80,6 +67,13 @@ $(document).ready(function() {
 				content = $(data).find('#offers_content').html();
 				$('#home_content').html(content);
 				$('html, body').animate({scrollTop:0}, 'fast');
+				var unread_bulbs = parseInt($('#unread_bulbs').html());
+				$('#bulb_count').html(unread_bulbs);
+				console.log('bulb count from offer page: '+$('#bulb_count').html());
+				console.log('unread_bulbs ' + unread_bulbs);
+				if (parseInt(unread_bulbs) > 0){
+					$('#home_notification img').attr('src' , '/assets/greenlight.png');
+				}
 
 			}
 		});
@@ -89,9 +83,8 @@ $(document).ready(function() {
 	
 	
 	
-	$(".fevent").live('click', function(){
+	$(document).on('click', ".fevent", function(){
 		var page = $('.page_events').html();
-
 		$.ajax({
 			url: page,
 			type: "get",
@@ -100,6 +93,13 @@ $(document).ready(function() {
 				content = $(data).find('#events_content').html();
 				$('#home_content').html(content);
 				$('html, body').animate({scrollTop:0}, 'fast');
+				var unread_bulbs = parseInt($('#unread_bulbs').html());
+				$('#bulb_count').html(unread_bulbs);
+				console.log('bulb count from offer page: '+$('#bulb_count').html());
+				console.log('unread_bulbs ' + unread_bulbs);
+				if (parseInt(unread_bulbs) > 0){
+					$('#home_notification img').attr('src' , '/assets/greenlight.png');
+				}
 			}
 		});
 		
@@ -107,9 +107,8 @@ $(document).ready(function() {
 	});
 	
 	
-	$(".fpromo").live('click', function(){
+	$(document).on('click', ".fpromo", function(){
 		var page = $('.page_promotions').html();
-
 		$.ajax({
 			url: page,
 			type: "get",
@@ -118,6 +117,12 @@ $(document).ready(function() {
 				content = $(data).find('#promotions_content').html();
 				$('#home_content').html(content);
 				$('html, body').animate({scrollTop:0}, 'fast');
+				var unread_bulbs = parseInt($('#unread_bulbs').html());
+				console.log('bulb count from offer page: '+$('#bulb_count').html());
+				console.log('unread_bulbs ' + unread_bulbs);
+				if (parseInt(unread_bulbs) > 0){
+					$('#home_notification img').attr('src' , '/assets/greenlight.png');
+				}
 			}
 		});
 		
@@ -126,9 +131,8 @@ $(document).ready(function() {
 	});
 	
 	
-	$(".fnews").live('click', function(){
+	$(document).on('click',".fnews", function(){
 		var page = $('.page_news').html();
-
 		$.ajax({
 			url: page,
 			type: "get",
@@ -137,6 +141,12 @@ $(document).ready(function() {
 				content = $(data).find('#news_content').html();
 				$('#home_content').html(content);
 				$('html, body').animate({scrollTop:0}, 'fast');
+				var unread_bulbs = parseInt($('#unread_bulbs').html());
+				console.log('bulb count from offer page: '+$('#bulb_count').html());
+				console.log('unread_bulbs ' + unread_bulbs);
+				if (parseInt(unread_bulbs) > 0){
+					$('#home_notification img').attr('src' , '/assets/greenlight.png');
+				}
 			}
 		});
 		
@@ -146,9 +156,9 @@ $(document).ready(function() {
 	
 	
 	
-	$('img[src="/assets/redlight.png"]').live('click', function(){
+	$(document).on('click','img[src="/assets/redlight.png"]', function(){
 		var page = $('.page_notifications').html();
-
+		console.log('bulb count from notification page: '+$('#bulb_count').html());
 		$.ajax({
 			url: page,
 			type: "get",
@@ -166,7 +176,7 @@ $(document).ready(function() {
 	
 	
 
-	$('img[src="/assets/greenlight.png"]').live('click', function(){
+	$(document).on('click','img[src="/assets/greenlight.png"]', function(){
 		var page = $('.page_notifications').html();
 
 		$.ajax({
@@ -177,6 +187,7 @@ $(document).ready(function() {
 				content = $(data).find('#notifications_content').html();
 				$('#home_content').html(content);
 				$('html, body').animate({scrollTop:0}, 'fast');
+				$('#home_notification img').attr('src' , '/assets/redlight.png');
 			}
 		});
 		
@@ -202,8 +213,8 @@ $(document).ready(function() {
   });
   
   
-  	$('#home1').live('click' , function(){
-		$('#home_page').live('pageshow' , function(){
+  	$('#home1').on('click' , function(){
+		$('#home_page').on('pageshow' , function(){
 			left = $('#store_img_pos').html();
 			$('#img').css('left', (parseInt(left))+ 'px');
 			$('#clublevelname').css('left' , '60px');
@@ -216,7 +227,7 @@ $(document).ready(function() {
 
   
   
-	$('img[src="/assets/home.jpg"]').live('click', function() {
+	$('img[src="/assets/home.jpg"]').on('click', function() {
 		$('img[src="/assets/home.jpg"]').attr('src', '/assets/homeover.jpg');
 		$('img[src="/assets/offersover.jpg"]').attr('src', '/assets/offers.jpg');
 		$('img[src="/assets/eventsover.jpg"]').attr('src', '/assets/events.jpg');
@@ -226,7 +237,7 @@ $(document).ready(function() {
 
 	});
 	
-	$('img[src="/assets/offers.jpg"]').live('click', function() {
+	$('img[src="/assets/offers.jpg"]').on('click', function() {
 		$('img[src="/assets/homeover.jpg"]').attr('src', '/assets/home.jpg');
 		$('img[src="/assets/offers.jpg"]').attr('src', '/assets/offersover.jpg');
 		$('img[src="/assets/eventsover.jpg"]').attr('src', '/assets/events.jpg');
@@ -236,7 +247,7 @@ $(document).ready(function() {
 
 	});
 	
-	$('img[src="/assets/events.jpg"]').live('click', function() {
+	$('img[src="/assets/events.jpg"]').on('click', function() {
 		$('img[src="/assets/homeover.jpg"]').attr('src', '/assets/home.jpg');
 		$('img[src="/assets/offersover.jpg"]').attr('src', '/assets/offers.jpg');
 		$('img[src="/assets/events.jpg"]').attr('src', '/assets/eventsover.jpg');
@@ -245,7 +256,7 @@ $(document).ready(function() {
 		
 	});
 	
-	$('img[src="/assets/promo.jpg"]').live('click', function() {
+	$('img[src="/assets/promo.jpg"]').on('click', function() {
 		$('img[src="/assets/homeover.jpg"]').attr('src', '/assets/home.jpg');
 		$('img[src="/assets/offersover.jpg"]').attr('src', '/assets/offers.jpg');
 		$('img[src="/assets/eventsover.jpg"]').attr('src', '/assets/events.jpg');
@@ -254,7 +265,7 @@ $(document).ready(function() {
 		
 	});
 	
-	$('img[src="/assets/news.jpg"]').live('click', function() {
+	$('img[src="/assets/news.jpg"]').on('click', function() {
 		$('img[src="/assets/homeover.jpg"]').attr('src', '/assets/home.jpg');
 		$('img[src="/assets/offersover.jpg"]').attr('src', '/assets/offers.jpg');
 		$('img[src="/assets/eventsover.jpg"]').attr('src', '/assets/events.jpg');
@@ -264,7 +275,7 @@ $(document).ready(function() {
 		
 	});
 	
-	$('img[src="/assets/redlight.png"]').live('click', function() {
+	$('img[src="/assets/redlight.png"]').on('click', function() {
 		$('img[src="/assets/homeover.jpg"]').attr('src', '/assets/home.jpg');
 		$('img[src="/assets/offersover.jpg"]').attr('src', '/assets/offers.jpg');
 		$('img[src="/assets/eventsover.jpg"]').attr('src', '/assets/events.jpg');
@@ -275,7 +286,7 @@ $(document).ready(function() {
 	});
 
 	
-	$('img[src="/assets/greenlight.png"]').live('click', function() {
+	$('img[src="/assets/greenlight.png"]').on('click', function() {
 		$('img[src="/assets/homeover.jpg"]').attr('src', '/assets/home.jpg');
 		$('img[src="/assets/offersover.jpg"]').attr('src', '/assets/offers.jpg');
 		$('img[src="/assets/eventsover.jpg"]').attr('src', '/assets/events.jpg');

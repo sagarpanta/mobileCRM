@@ -70,35 +70,33 @@ font-family: "Verdana";
 font-size: 9px;
 border:2px solid;
 border-radius:25px;
-
-
 }
 
-
-
-
-
+.event_list  td p{
+	font-size:9px;
+}
 
 .event_list_unread {
-
 display: block;
 margin-left: auto;
-
 background: rgba(255, 233, 133, 0.9);
 width:100%;
 color:#444;
 font-family: "Verdana";
-font-size: 9px;
 border:2px solid;
 border-radius:25px;
 
 
 }
 
+.event_list_unread  td p{
+	font-size:9px;
+}
 
 
 
-h3{
+
+h3,h5{
 margin-left:10px;
 }
 

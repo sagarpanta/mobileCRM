@@ -3,6 +3,7 @@ class PromotionsController < ApplicationController
   # GET /promotions.json
   def index
     @promotions = Promotion.where('playerid = ?' , current_player.playerid).order("created_at desc")
+	@bulbs = Notification.where('playerid = ?' , current_player.playerid).sum(:bulb)
 
 
     respond_to do |format|
@@ -15,6 +16,8 @@ class PromotionsController < ApplicationController
   # GET /promotions/1.json
   def show
     @promotion = Promotion.find(params[:id])
+	
+	@notifications = Notification.where('playerid = ? and notificationid=? and notification=?' , current_player.playerid, @promotion.id, 'promotions')
 
     respond_to do |format|
       format.html # show.html.erb
@@ -46,7 +49,7 @@ class PromotionsController < ApplicationController
     respond_to do |format|
       if @promotion.save
 		@promotion.update_notification
-        format.html { redirect_to @promotion, notice: 'Promotion was successfully created.' }
+        format.html { redirect_to promotions_url}
         format.json { render json: @promotion, status: :created, location: @promotion }
       else
         format.html { render action: "new" }

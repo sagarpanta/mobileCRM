@@ -3,6 +3,8 @@ class OffersController < ApplicationController
   # GET /offers.json
   def index
     @offers = Offer.where('playerid = ?' , current_player.playerid).order("created_at desc")
+	@bulbs = Notification.where('playerid = ?' , current_player.playerid).sum(:bulb)
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +16,7 @@ class OffersController < ApplicationController
   # GET /offers/1.json
   def show
     @offer = Offer.find(params[:id])
-
+	@notifications = Notification.where('playerid = ? and notificationid=? and notification=?' , current_player.playerid, @offer.id, 'offers')
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @offer }
@@ -46,8 +48,7 @@ class OffersController < ApplicationController
       if @offer.save
 		@offer.update_notification
 	
-        format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
-        format.json { render json: @offer, status: :created, location: @offer }
+        format.html { redirect_to offers_url }
       else
         format.html { render action: "new" }
         format.json { render json: @offer.errors, status: :unprocessable_entity }

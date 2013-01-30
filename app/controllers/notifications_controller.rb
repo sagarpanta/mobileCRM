@@ -2,6 +2,7 @@ class NotificationsController < ApplicationController
   # GET /notifications
   # GET /notifications.json
   def index
+	Notification.where('playerid = ?' , current_player.playerid).update_all(:bulb=>0)
     @notifications = Notification.where('playerid = ?' , current_player.playerid).order("created_at desc")
 	
 
@@ -80,5 +81,11 @@ class NotificationsController < ApplicationController
       format.html { redirect_to notifications_url }
       format.json { head :no_content }
     end
+  end
+  
+  
+  def notification_bulbs
+	@bulbs = Notification.where('playerid = ?' , current_player.playerid).sum(:bulb)
+	
   end
 end

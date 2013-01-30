@@ -15,7 +15,7 @@
 					<tr class="promotion_list_unread" data-time="<%=  p.created_at  %>">
 						<td class="image"><%= image_tag '/assets/default_promotion.png' , :width =>'60px' , :height=> '60px' %></td>
 						<td class="description">
-							<h3><%= p.description %></h3>
+							<h5><%= p.description %></h5>
 							<p>Entries: <%= p.num_of_entries %></p>
 							<p>Start Date: <%= p.startdate.strftime("%b %d, %Y") %>&nbsp;&nbsp;&nbsp;End Date: <%= p.endate.strftime("%b %d, %Y") %></p>
 							<p>Drawing: <%= p.drawingtime.strftime("%b %d, %Y %I:%M%p") %></p>
@@ -30,7 +30,7 @@
 				<tr class="promotion_list" data-time="<%=  p.created_at  %>">
 					<td class="image"><%= image_tag '/assets/default_promotion.png' , :width =>'60px' , :height=> '60px' %></td>
 					<td class="description">
-						<h3><%= p.description %></h3>
+						<h5><%= p.description %></h5>
 						<p>Entries: <%= p.num_of_entries %></p>
 						<p>Start Date: <%= p.startdate.strftime("%b %d, %Y") %>&nbsp;&nbsp;&nbsp;End Date: <%= p.endate.strftime("%b %d, %Y") %></p>
 						<p>Drawing: <%= p.drawingtime.strftime("%b %d, %Y %I:%M%p") %></p>
@@ -43,6 +43,7 @@
 			<% end %>
 		  <% end %>
 		  </table>
+		  <div id="unread_bulbs"><%= @bulbs %></div>
 		<% else %>
 			You are not signed in<br/>
 			<% link_to signin_path %>

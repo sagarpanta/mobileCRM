@@ -13,13 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require jquery.mobile
 
 
 
 
 $(document).ready(function(){
 	
-	$(".mark_as_read").live('click', function(){
+	$(document).on('click', ".mark_as_read", function(){
 		var page = $(this).children('p').html();
 		$.ajax({
 			url: page,
@@ -29,19 +30,16 @@ $(document).ready(function(){
 		});
 		
 		
-		
-		
-
-		
 		$(this).parent().css('background' , 'rgba(243, 243, 243, 0.9)');
 		//$(this).html('<img alt="Unread" src="/assets/read.png">')
 		$(this).hide();
-		var count = $('#bulb_count').html();
+		var count = $('#unread_bulbs').html();
+		console.log('bulb count from mark as read: '+count);
 		if (count>0){
-		$('#bulb_count').html(parseInt(count,10)-1);
+			$('#home_notification img').attr('src', '/assets/greenlight.png');
 		}
 		else {
-			$('#bulb_count').html(0);
+			$('#home_notification img').attr('src', '/assets/greenlight.png');
 		}
 		
 		//the value decreases on every click
@@ -56,7 +54,7 @@ $(document).ready(function(){
 	});
 	
 	
-	//$(".unread").live('click', function(){
+	//$(".unread").on('click', function(){
 	//	var page = $(this).parent().children('p').html();
 	//	var page = $(this).parent().children('p').html();
 		
@@ -87,12 +85,7 @@ $(document).ready(function(){
 			
 	//	}
 
-	
 
-	
-	
-	
-	
 });
 
 

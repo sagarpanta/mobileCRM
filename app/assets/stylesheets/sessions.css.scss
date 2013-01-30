@@ -2,18 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#session_playerid
+.field
 {
 	position: relative;
-	width: 200px;
+	width: 200px !important;
 
 }
 
-#session_password
-{
-	position: relative;
-	width: 200px;
-}
 
 .actions
 {
@@ -29,7 +24,7 @@ color: black;
 text-shadow: none;
 }
 
-h3{
+h3,h5{
 font-family: "Verdana";
 }
 

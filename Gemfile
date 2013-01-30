@@ -8,10 +8,11 @@ gem 'rails'
 
 
 gem 'mobylette'
-gem 'jquery_mobile_rails'
+gem "jquery_mobile_rails", git: "git://github.com/tscolari/jquery-mobile-rails.git"
 
 #gem 'activerecord-postgresql-adapter'
 
+gem 'pry'
 
 gem 'pg'
 gem 'thin'

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	$('#offer_page').live('pageinit', function() {
+	$('#offer_page').on('pageinit', function() {
 		width = $(window).width();
 		$('ul').css('left', '0').css('width', width)
 		$('li').css('width', parseFloat(width/5));

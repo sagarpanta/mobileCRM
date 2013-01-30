@@ -8,6 +8,7 @@ MobileCRM::Application.routes.draw do
   resources :news
 
   resources :notifications
+  match '/bulbs' , :to=> 'notifications#notification_bulbs'
 
   resources :offers
   

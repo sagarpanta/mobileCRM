@@ -12,7 +12,7 @@
 			<% if o.read == 0 %>
 					<tr class="offer_list_unread" data-time="<%=  o.created_at  %>">
 						<td class="spacer"><%= image_tag '/assets/spacer.png' %></td><td class="image"><%= image_tag  o.code+'o.png' , :width =>'60px' , :height=> '60px' %></td>
-						<td class="description"><h3><%= o.description %></h3>
+						<td class="description"><h5><%= o.description %></h5>
 							<p>Start Date: <%= o.startdate.strftime("%b %d, %Y") %></p>
 							<p>End Date: <%= o.enddate.strftime("%b %d, %Y") %></p>
 
@@ -25,7 +25,7 @@
 				<tr class="offer_list" data-time="<%=  o.created_at  %>">
 					<td class="spacer"><%= image_tag '/assets/spacer.png' %></td><td class="image"><%= image_tag o.code+'o.png' , :width =>'60px' , :height=> '60px' %></td>
 					<td class="description">
-						<h3><%= o.description %></h3>
+						<h5><%= o.description %></h5>
 						<p>Start Date: <%= o.startdate.strftime("%b %d, %Y") %></p>
 						<p>End Date: <%= o.enddate.strftime("%b %d, %Y") %></p>
 					</td>
@@ -36,6 +36,7 @@
 			<% end %>
 		  <% end %>
 		  </table>
+		  <div id="unread_bulbs"><%= @bulbs %></div>
 		<% else %>
 			You are not signed in<br/>
 			<% link_to signin_path %>

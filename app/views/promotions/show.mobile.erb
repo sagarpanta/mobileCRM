@@ -1,5 +1,5 @@
 <%= @promotion.mark_as_read %>
-<% Notification.where('playerid = ? and notificationid=? and notification=?' , current_player.playerid, @promotion.id, 'promotions').each do |n| %>
+<% @notifications.each do |n| %>
 	<% n.set_bulb_to_zero %>
 <% end %>
 
