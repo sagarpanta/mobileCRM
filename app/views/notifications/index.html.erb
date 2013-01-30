@@ -1,0 +1,50 @@
+
+<h1>Listing Notifications</h1>
+<table>
+  <thead>
+    <tr>
+	  
+      <th>Player ID</th>
+	  <th>Notification</th>
+	  <th>Description</th>
+      <th>Code</th>
+      <th>Start Date</th>
+	  <th>End Date</th>
+	  <th>Drawing Time</th>
+	  <th>No. of Entries</th>
+	  <th>Read</th>
+	  <th></th>
+	  <th></th>
+	  <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @notifications.each do |n| %>
+    <tr>
+	  <td><%= n.playerid %></td>
+	  <td><%= n.notification %></td>
+      <td><%= n.description %></td>
+	  <td><%= n.code %></td>
+	  <td><%= n.startdate.strftime("%b %d, %Y") %></td>
+	  <td><%= n.endate.strftime("%b %d, %Y") %></td>
+	  <td><%= n.notification=='promotions'? n.drawingtime.strftime("%b %d, %Y %I:%M%p"):'-' %></td>
+	  <td><%= n.notification=='promotions'? n.num_of_entries: '-' %></td>
+	  <td><%= n.read %></td>
+      <td><%= link_to 'Show', n %></td>
+      <td><%= link_to 'Edit', edit_notification_path(n) %></td>
+      <td><%= link_to 'Destroy', n, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+
+
+
+
+
+
+
+
