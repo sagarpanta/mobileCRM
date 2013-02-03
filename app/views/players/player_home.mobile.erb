@@ -72,11 +72,12 @@
 			<% end %>
 		</div>	
 		<div id='current_player' style="display:none"><%= current_player.playerid %></div>
+		<div id='last_offer' style="display:none"><%= @last_offer_date.strftime('%Y-%m-%d %H:%M:%S.%6N') %></div>
+		<div id='last_event' style="display:none"><%= @last_event_date.strftime('%Y-%m-%d %H:%M:%S.%6N') %></div>
+		<div id='last_promotion' style="display:none"><%= @last_promotion_date.strftime('%Y-%m-%d %H:%M:%S.%6N') %></div>
+		<div id='last_notification' style="display:none"><%= @last_notification_date.strftime('%Y-%m-%d %H:%M:%S.%6N') %></div>
 		<div id="transfer_total_bulb_count" style="display:none"><%= Notification.where('playerid=?' ,current_player.playerid ).sum('bulb') %></div>
 
-
-	</div>
-	
 
 	<div data-role="footer" data-position="fixed" data-tap-toggle="false" >
 				<ul>
@@ -86,9 +87,9 @@
 					<li class='fpromo'><%= image_tag('/assets/promo.jpg',:class=> 'footer_img', :width=> '100%') %></li>
 					<li class='fnews'><%= image_tag('/assets/news.jpg', :class=> 'footer_img',:width=> '100%') %></li>
 				</ul>
-
 	</div>
 	
+	<div id="unread_bulbs" style="display:none"><%= @bulbs %></div>
 	
 	<div class="page_home" style="display:none">/player_home/</div>
 	<div class="page_offers" style="display:none">/offers/</div>

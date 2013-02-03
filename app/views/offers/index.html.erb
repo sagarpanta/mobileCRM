@@ -8,6 +8,7 @@
       <th>Start Date</th>
 	  <th>End Date</th>
 	  <th>Read</th>
+	  <th>Created At</th>
 	  <th></th>
 	  <th></th>
 	  <th></th>
@@ -22,6 +23,7 @@
 	  <td><%= o.startdate.strftime("%b %d, %Y") %></td>
 	  <td><%= o.enddate.strftime("%b %d, %Y") %></td>
 	  <td><%= o.read %></td>
+	  <td><%= o.created_at %></td>
       <td><%= link_to 'Show', o %></td>
       <td><%= link_to 'Edit', edit_offer_path(o) %></td>
       <td><%= link_to 'Destroy', o, method: :delete, data: { confirm: 'Are you sure?' } %></td>

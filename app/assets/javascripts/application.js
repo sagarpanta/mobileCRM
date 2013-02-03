@@ -34,22 +34,18 @@ $(document).ready(function(){
 		//$(this).html('<img alt="Unread" src="/assets/read.png">')
 		$(this).hide();
 		var count = $('#unread_bulbs').html();
-		console.log('bulb count from mark as read: '+count);
+		$('#unread_bulbs').html(count-1);
 		if (count>0){
 			$('#home_notification img').attr('src', '/assets/greenlight.png');
 		}
 		else {
-			$('#home_notification img').attr('src', '/assets/greenlight.png');
+			$('#home_notification img').attr('src', '/assets/redlight.png');
 		}
 		
 		//the value decreases on every click
-		var sum_bulb = 	$('#bulb_count').html();
+		var sum_bulb = 	$('#unread_bulbs').html();
 		if (sum_bulb == 0){
 			$('#home_notification').html('<img alt="dark" height="31px" src="/assets/redlight.png" width="35px" />');
-			$('#event_notification').html('<img alt="dark" height="31px" src="/assets/redlight.png" width="35px" />');
-			$('#promotion_notification').html('<img alt="dark" height="31px" src="/assets/redlight.png" width="35px" />');
-			$('#offer_notification').html('<img alt="dark" height="31px" src="/assets/redlight.png" width="35px" />');	
-			$('#announcement_notification').html('<img alt="dark" height="31px" src="/assets/redlight.png" width="35px" />');	
 		}
 	});
 	

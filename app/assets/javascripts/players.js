@@ -13,7 +13,28 @@ $(document).on('pageinit' ,'#home_page', function(){
 		$('ul').css('left', '0').css('width', window_width)
 		$('li').css('width', parseFloat(window_width/5));
 		$('img.footer_img').height('40px');
+		
+		console.log('unread bulbs ', $('#unread_bulbs').html());
 
+		/*
+		var i;
+		for(i=1;i<=1000;i++){
+			jsonObj = {code:'3333', playerid:'101', startdate:'2013-01-01', enddate:'2013-01-01', description:'from js', read:0};
+			$.ajax({
+				url: '/offers',
+				type: 'post',
+				cache: false,
+				data: {offer:jsonObj},
+				success: function(data, textStatus, jqXHR ) { 
+					console.log('successfull: '+i);	
+				},
+				error: function(jqXHR, textStatus, errorThrown){ 
+					console.log('unsuccessful');
+				}
+			});	
+		}
+		*/
+		
 		
 
 	$(document).on('click',".fhome", function(){
@@ -46,12 +67,11 @@ $(document).on('pageinit' ,'#home_page', function(){
 				
 				var unread_bulbs = parseInt($('#unread_bulbs').html());
 				$('#bulb_count').html(unread_bulbs);
+				console.log('bulb count from offer page: '+$('#bulb_count').html());
 				console.log('unread_bulbs ' + unread_bulbs);
 				if (parseInt(unread_bulbs) > 0){
 					$('#home_notification img').attr('src' , '/assets/greenlight.png');
 				}
-
-				
 			}
 		});
 		
@@ -195,16 +215,6 @@ $(document).on('pageinit' ,'#home_page', function(){
 	
 	});
 	
-	
-
-		
-	
-	
-	
-	
-	
-
-	
 
   $('[data-role="content"]').mousemove(function(e){
 		pos = $('#img').css('left');
@@ -275,7 +285,7 @@ $(document).on('pageinit' ,'#home_page', function(){
 		
 	});
 	
-	$('img[src="/assets/redlight.png"]').on('click', function() {
+	$(document).on('click', 'img[src="/assets/redlight.png"]', function() {
 		$('img[src="/assets/homeover.jpg"]').attr('src', '/assets/home.jpg');
 		$('img[src="/assets/offersover.jpg"]').attr('src', '/assets/offers.jpg');
 		$('img[src="/assets/eventsover.jpg"]').attr('src', '/assets/events.jpg');
@@ -286,14 +296,14 @@ $(document).on('pageinit' ,'#home_page', function(){
 	});
 
 	
-	$('img[src="/assets/greenlight.png"]').on('click', function() {
+	$(document).on('click', 'img[src="/assets/greenlight.png"]', function() {
 		$('img[src="/assets/homeover.jpg"]').attr('src', '/assets/home.jpg');
 		$('img[src="/assets/offersover.jpg"]').attr('src', '/assets/offers.jpg');
 		$('img[src="/assets/eventsover.jpg"]').attr('src', '/assets/events.jpg');
 		$('img[src="/assets/promoover.jpg"]').attr('src', '/assets/promo.jpg');
 		$('img[src="/assets/newsover.jpg"]').attr('src', '/assets/news.jpg');
 		
-		$('img[src="/assets/greenlight.png"]').attr('src', '/assets/redlight.png');
+		$(this).attr('src', '/assets/redlight.png');
 	});
 
 

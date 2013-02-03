@@ -42,8 +42,8 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
+	
     @offer = Offer.new(params[:offer])
-
     respond_to do |format|
       if @offer.save
 		@offer.update_notification

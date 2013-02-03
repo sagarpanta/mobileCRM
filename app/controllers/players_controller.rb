@@ -87,10 +87,15 @@ class PlayersController < ApplicationController
 		redirect_to signin_path
 	else
 		@player = current_player
+		@bulbs = Notification.where('playerid = ?' , current_player.playerid).sum(:bulb)
+		@last_offer_date = Offer.where('playerid = ?' , current_player.playerid).maximum(:created_at)
+		@last_event_date = Event.where('playerid = ?' , current_player.playerid).maximum(:created_at)
+		@last_promotion_date = Promotion.where('playerid = ?' , current_player.playerid).maximum(:created_at)
+		@last_notification_date = Notification.where('playerid = ?' , current_player.playerid).maximum(:created_at)
 		
-	    respond_to do |format|
-		format.mobile
-		format.json { head :no_content }
+		respond_to do |format|
+			format.mobile
+			format.json { head :no_content }
 		end
 	end
   end

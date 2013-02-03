@@ -6,8 +6,4 @@ $(document).ready(function() {
 		$('li').css('width', parseFloat(width/5));
 		$('img.footer_img').height('40px');
 	});
-	
-
-
-
 });
