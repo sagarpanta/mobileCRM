@@ -4,7 +4,7 @@
 
 
 
-#home_page {background: url(/assets/bg.jpg) no-repeat;
+#home_page {background: url(/assets/background_h.png) no-repeat;
 background-size: 100% 100%;
 color: white;
 text-shadow: none;
@@ -124,8 +124,14 @@ font-family: "Verdana";
 
 #img{
 	position: relative;
-	width:200px;
-	height:112px;
+	margin-top:50px;
+	text-align:center;
+}
+
+#img img{
+	width:300px;
+	height:300px;
+
 }
 
 
@@ -147,6 +153,22 @@ color:black;
 }
 
 
+
+@media only screen and (min-device-width: 768px) {
+	#img{
+		
+		position: relative;
+		margin-top:50px;
+		text-align:center;
+	}
+
+	#img img{
+		width:400px;
+		height:400px;
+
+	}
+	
+}
 
 
 

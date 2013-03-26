@@ -1,11 +1,11 @@
 $(document).on('pageinit' ,'#home_page', function(){
 		window_width = $(window).width();
-		img_position = 0.5*window_width - 0.5*200;
+		//img_position = 0.5*window_width - 0.5*200;
 		//14 is an some unknown constant added to the position to make it central
 		//it is the difference between the programmatically calculate position and the actual postion
-		$('#img').css('left', '0px');
+		$('#img').css('text-align', 'center');
 		$('#store_img_pos').html('0px');
-		$('#img').css('left', (parseInt(img_position)-14) + 'px');
+		//$('#img').css('left', (parseInt(img_position)-14) + 'px');
 		$('#clublevelname').css('left' , '10px');
 		$('#clublevelid').css('left' , '150px');
 
@@ -52,12 +52,12 @@ $(document).on('pageinit' ,'#home_page', function(){
 				$('html, body').animate({scrollTop:0}, 'fast');
 				window_width = $(window).width();
 		
-				img_position = 0.5*window_width - 0.5*200;
+				//img_position = 0.5*window_width - 0.5*200;
 				//14 is an some unknown constant added to the position to make it central
 				//it is the difference between the programmatically calculate position and the actual postion
-				$('#img').css('left', '0px');
+				$('#img').css('text-align', 'center');
 				$('#store_img_pos').html('0px');
-				$('#img').css('left', (parseInt(img_position)-14) + 'px');
+				//$('#img').css('left', (parseInt(img_position)-14) + 'px');
 				$('#clublevelname').css('left' , '10px');
 				$('#clublevelid').css('left' , '150px');
 				

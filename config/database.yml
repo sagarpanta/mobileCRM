@@ -28,13 +28,24 @@ test:
   pool: 5
   timeout: 5000
 
+  
 production:
-    adapter: sqlserver
-    mode: dblib
-    dataserver: tshv0dv06   # Name from freetds.conf, host or instance 'localhost\SQLEXPRESS'
-    host: mydb.net          # Used if dataserver is blank.
-    port: 1433              # Used if host present. Default is 1433.
-    database: mobileCRM
-    username: sa
-    password: password
-    timeout: 5000
+  adapter: postgresql
+  encoding: unicode
+  database: mobileCRM
+  pool: 5
+  username: postgres
+  password: password 
+  
+#production:
+#    adapter: sqlserver
+#    mode: dblib
+#    dataserver: tshv0dv06   # Name from freetds.conf, host or instance 'localhost\SQLEXPRESS'
+#    host: mydb.net          # Used if dataserver is blank.
+#    port: 1433              # Used if host present. Default is 1433.
+#    database: mobileCRM
+#    username: sa
+#    password: password
+#    timeout: 5000
+
+
